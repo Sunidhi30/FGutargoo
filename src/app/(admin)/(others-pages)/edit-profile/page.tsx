@@ -3,6 +3,7 @@
 import { PencilIcon } from '@heroicons/react/24/solid';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
+
 export default function EditProfilePage() {
   const router = useRouter();
   const [editMode, setEditMode] = useState(false);
@@ -119,19 +120,19 @@ export default function EditProfilePage() {
 
   return (
     <div className="max-w-4xl mx-auto mt-10 p-6 space-y-8">
-      <h2 className="text-2xl font-semibold">Vendor Profile</h2>
+      <h2 className="text-2xl font-semibold dark:text-white">Vendor Profile</h2>
 
       <div className="flex justify-between items-center">
         <div className="flex items-center space-x-4">
           <img
             src={formData.image || defaultImage}
             alt="Profile"
-            className="w-16 h-16 rounded-full object-cover"
+            className="w-24 h-24 rounded-full object-cover border-2 border-gray-300"
           />
           <div>
-            <h3 className="text-lg font-semibold">{formData.username}</h3>
-            <p className="text-sm text-gray-500">{formData.fullName}</p>
-            <p className="text-sm text-gray-500">Status: {formData.status}</p>
+            <h3 className="text-xl font-semibold dark:text-white">{formData.username}</h3>
+            <p className="text-sm dark:text-white">{formData.fullName}</p>
+            <p className="text-sm dark:text-white">Status: {formData.status}</p>
           </div>
         </div>
         <button
@@ -140,22 +141,22 @@ export default function EditProfilePage() {
           className="text-blue-500 hover:underline flex items-center space-x-1"
         >
           <PencilIcon className="h-4 w-4" />
-          <span>{editMode ? 'Cancel' : 'Edit'}</span>
+          <span className="dark:text-white">{editMode ? 'Cancel' : 'Edit'}</span>
         </button>
       </div>
 
-      <div className="bg-white p-6 rounded-lg shadow-md space-y-4">
-        <h4 className="text-md font-medium">Account Info</h4>
-        <div className="grid grid-cols-2 gap-4 text-sm">
+      <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md space-y-4">
+        <h4 className="text-md font-medium dark:text-white">Account Info</h4>
+        <div className="grid grid-cols-2 gap-4 text-sm dark:text-white">
           <div><strong>Full Name:</strong> {formData.fullName}</div>
           <div><strong>Email:</strong> {formData.email}</div>
           <div><strong>Status:</strong> {formData.status}</div>
         </div>
       </div>
 
-      <div className="bg-white p-6 rounded-lg shadow-md space-y-4">
-        <h4 className="text-md font-medium">Account Stats</h4>
-        <div className="grid grid-cols-2 gap-4 text-sm">
+      <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md space-y-4">
+        <h4 className="text-md font-medium dark:text-white">Account Stats</h4>
+        <div className="grid grid-cols-2 gap-4 text-sm dark:text-white">
           <div><strong>Total Users:</strong> {formData.totalUsers}</div>
           <div><strong>Total Videos:</strong> {formData.totalVideos}</div>
           <div><strong>Total Views:</strong> {formData.totalViews}</div>
@@ -165,29 +166,29 @@ export default function EditProfilePage() {
       </div>
 
       {editMode && (
-        <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-md space-y-4">
-          <h4 className="text-md font-medium">Edit Profile</h4>
+        <form onSubmit={handleSubmit} className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md space-y-4">
+          <h4 className="text-md font-medium dark:text-white">Edit Profile</h4>
           <div className="grid grid-cols-2 gap-4">
             <input
               name="username"
               placeholder="Username"
               value={formData.username}
               onChange={handleChange}
-              className="border p-2 rounded"
+              className="border p-2 rounded focus:ring-2 focus:ring-blue-500"
             />
             <input
               name="email"
               type="email"
               value={formData.email}
               onChange={handleChange}
-              className="border p-2 rounded"
+              className="border p-2 rounded focus:ring-2 focus:ring-blue-500"
             />
             <input
               name="fullName"
               placeholder="Full Name"
               value={formData.fullName}
               onChange={handleChange}
-              className="border p-2 rounded"
+              className="border p-2 rounded focus:ring-2 focus:ring-blue-500"
             />
             <input
               name="password"
@@ -195,13 +196,13 @@ export default function EditProfilePage() {
               placeholder="New Password"
               value={formData.password}
               onChange={handleChange}
-              className="border p-2 rounded"
+              className="border p-2 rounded focus:ring-2 focus:ring-blue-500"
             />
             <input
               type="file"
               accept="image/*"
               onChange={handleImageChange}
-              className="border p-2 rounded col-span-2"
+              className="border p-2 rounded col-span-2 focus:ring-2 focus:ring-blue-500"
             />
           </div>
           <button
@@ -214,10 +215,9 @@ export default function EditProfilePage() {
         </form>
       )}
 
-      {/* Account Settings */}
-      <div className="bg-white p-6 rounded-lg shadow-md space-y-4">
-        <h4 className="text-md font-medium">Account Settings</h4>
-        <ul className="space-y-2 text-sm text-gray-700">
+      <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md space-y-4">
+        <h4 className="text-md font-medium dark:text-white">Account Settings</h4>
+        <ul className="space-y-2 text-sm dark:text-white">
           <li className="flex justify-between items-center">
             <span>Notification Preferences</span>
             <button className="text-blue-500 hover:underline">Manage</button>
@@ -237,24 +237,23 @@ export default function EditProfilePage() {
         </ul>
       </div>
 
-      {/* Support */}
-      <div className="bg-white p-6 rounded-lg shadow-md space-y-4">
-        <h4 className="text-md font-medium">Support</h4>
-        <p className="text-sm text-gray-600">
+      <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md space-y-4">
+        <h4 className="text-md font-medium dark:text-white">Support</h4>
+        <p className="text-sm dark:text-white">
           If you're facing issues or have any questions, feel free to contact our support team.
         </p>
-        <ul className="space-y-2 text-sm text-gray-700">
+        <ul className="space-y-2 text-sm dark:text-white">
           <li>
             📧 Email:{' '}
             <a href="mailto:support@example.com" className="text-blue-500 hover:underline">
-              support@example.com
+              support@infyle.com
             </a>
           </li>
           <li>
-            📞 Phone: <span className="text-gray-800">+1 800 123 4567</span>
+            📞 Phone: <span className="text-gray-800 dark:text-white">+91 77078 32741</span>
           </li>
           <li>
-            🕐 Support Hours: Mon - Fri, 9:00 AM to 6:00 PM
+            🕐 Support Hours: Mon - Sat, 10:00 AM to 6:00 PM
           </li>
         </ul>
       </div>
