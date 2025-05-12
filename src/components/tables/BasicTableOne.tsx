@@ -38,7 +38,6 @@ export default function BasicTableOne() {
   const [videoData, setVideoData] = useState<Video[]>([]);
   const [types, setTypes] = useState<Type[]>([]);
   const [selectedType, setSelectedType] = useState<string>("");
-
   // Fetch types for filter dropdown
   useEffect(() => {
     const fetchTypes = async () => {
@@ -88,7 +87,9 @@ export default function BasicTableOne() {
   }, [selectedType]);
 
   return (
+    
     <div className="overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-white/[0.05] dark:bg-white/[0.03]">
+      
       <div className="w-full overflow-x-auto">
         <div className="min-w-[1102px]">
 
