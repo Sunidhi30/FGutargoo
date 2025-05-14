@@ -708,6 +708,7 @@ const parseJwt = (token) => {
         {loading ? 'Submitting...' : 'Submit Video'}
       </button>
     </form>
+ 
   );
 };
 

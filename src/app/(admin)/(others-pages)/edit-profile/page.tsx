@@ -3,7 +3,6 @@
 import { PencilIcon } from '@heroicons/react/24/solid';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
-
 export default function EditProfilePage() {
   const router = useRouter();
   const [editMode, setEditMode] = useState(false);
@@ -13,7 +12,7 @@ export default function EditProfilePage() {
     fullName: '',
     password: '',
     status: '',
-    image: '',
+    image: '',  
     totalUsers: 0,
     totalVideos: 0,
     totalViews: 0,
@@ -23,7 +22,6 @@ export default function EditProfilePage() {
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
   const defaultImage = 'https://img.freepik.com/premium-vector/vector-flat-illustration-grayscale-avatar-user-profile-person-icon-gender-neutral-silhouette-profile-picture-suitable-social-media-profiles-icons-screensavers-as-templatex9xa_719432-875.jpg?semt=ais_hybrid&w=740';
-
   useEffect(() => {
     async function fetchVendorProfile() {
       try {
@@ -39,7 +37,6 @@ export default function EditProfilePage() {
           router.push('/login');
           return;
         }
-
         const data = await res.json();
         if (data.success && data.vendor) {
           setFormData(prev => ({
@@ -53,7 +50,6 @@ export default function EditProfilePage() {
         console.error('Error fetching vendor profile:', err);
       }
     }
-
     fetchVendorProfile();
   }, [router]);
 
@@ -69,13 +65,13 @@ export default function EditProfilePage() {
     const file = e.target.files?.[0];
     if (file) {
       setImageFile(file);
-      setFormData(prev => ({
+      setFormData(prev  => ({
         ...prev,
         image: URL.createObjectURL(file),
       }));
     }
   };
-
+ 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
